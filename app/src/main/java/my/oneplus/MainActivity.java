@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Menu3Fragment menu3Fragment = new Menu3Fragment();
     private Menu4Fragment menu4Fragment = new Menu4Fragment();
     private Menu5Fragment menu5Fragment = new Menu5Fragment();
+    private MapFragment mapFragment = new MapFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch(item.getItemId()){
             case R.id.logout:
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -98,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.setTitle("종료 알림창");
                 alert.show();
+            case R.id.map:
+                transaction.replace(R.id.frame_layout, mapFragment).commitAllowingStateLoss();
+
+
 
 
                 return true;
